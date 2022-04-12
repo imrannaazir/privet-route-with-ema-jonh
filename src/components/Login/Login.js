@@ -7,19 +7,21 @@ const Login = () => {
 
     return (
         <div className=' w-[360px] md:w-[400px] mx-auto text-lg text-center shadow-lg rounded-lg py-12 my-10 bg-white flex flex-col gap-6 '>
-            <p className=' text-2xl font-bold text-gray-600'>Login Website</p>
+            <p className=' text-2xl font-bold text-gray-600'>Login Ema-John</p>
             <form className='flex flex-col  gap-6'>
                 <input
                     type="email"
                     name="email"
                     id="" placeholder='Enter email'
                     className=' border-2 py-2 w-[350px] rounded-md pl-6 block mx-auto border-orange-400'
+                    required
                 />
                 <input
                     type="password"
                     name="password"
                     id="" placeholder='Enter password'
                     className=' border-2 py-2 w-[350px] rounded-md pl-6 block mx-auto border-orange-400'
+                    required
                 />
                 <button
                     type="submit"

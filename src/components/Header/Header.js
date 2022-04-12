@@ -16,7 +16,7 @@ const Header = () => {
             </div>
             <div>
                 <Link to='/login'>Login</Link>
-                <Link to='signup'>Sign Up</Link>
+                <Link className=' border-2 border-orange-400 px-4 py-2 rounded-full' to='signup'>Sign Up</Link>
             </div>
         </nav>
     );
