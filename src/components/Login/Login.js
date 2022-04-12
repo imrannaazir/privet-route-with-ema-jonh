@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 
 const Login = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
+    const navigate = useNavigate()
+    const [
+        signInWithEmailAndPassword,
+        user
+    ] = useSignInWithEmailAndPassword(auth);
+    const handleEmail = event => {
+        setEmail(event.target.value)
+
+    }
+    const handlePassword = event => {
+        setPassword(event.target.value)
+    }
+    const handleSignUpWithEmail = event => {
+        event.preventDefault()
+        signInWithEmailAndPassword(email, password)
+        if (user) {
+            navigate('/')
+        }
+    }
+
 
     return (
         <div className=' w-[360px] md:w-[400px] mx-auto text-lg text-center shadow-lg rounded-lg py-12 my-10 bg-white flex flex-col gap-6 '>
             <p className=' text-2xl font-bold text-gray-600'>Login Ema-John</p>
-            <form className='flex flex-col  gap-6'>
+            <form onSubmit={handleSignUpWithEmail} className='flex flex-col  gap-6'>
                 <input
+                    onBlur={handleEmail}
                     type="email"
                     name="email"
                     id="" placeholder='Enter email'
@@ -17,6 +43,8 @@ const Login = () => {
                     required
                 />
                 <input
+
+                    onBlur={handlePassword}
                     type="password"
                     name="password"
                     id="" placeholder='Enter password'
